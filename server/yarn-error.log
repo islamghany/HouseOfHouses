@@ -1,0 +1,62 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\soft\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\dotnet\;C:\Users\soft\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\soft\AppData\Local\Programs\Python\Python36-32\;C:\Program Files\heroku\bin;C:\Users\soft\AppData\Roaming\npm;C:\Users\soft\.dotnet\tools
+
+Yarn version: 
+  1.22.7
+
+Node version: 
+  12.16.1
+
+Platform: 
+  win32 ia32
+
+Trace: 
+  SyntaxError: E:\code\full-stack\HouseOfHouses\server\package.json: Unexpected token } in JSON at position 288
+      at JSON.parse (<anonymous>)
+      at C:\Users\soft\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\soft\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Users\soft\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "tinyhouse-server",
+    "version": "0.1.0",
+    "dependencies": {
+      "apollo-server-express": "^2.17.0",
+      "body-parser": "^1.19.0",
+      "cookie-parser": "^1.4.5",
+      "express": "^4.17.1",
+      "googleapis": "^61.0.0",
+      "graphql": "^15.3.0",
+      "lodash.merge": "^4.6.2",
+    },
+    "devDependencies": {
+      "@types/body-parser": "^1.19.0",
+      "@types/cookie-parser": "^1.4.2",
+      "@types/express": "^4.17.8",
+      "@types/graphql": "^14.5.0",
+      "@types/lodash.merge": "^4.6.6",
+      "@types/mongoose": "^3.5.27",
+      "@types/node": "^14.10.1",
+      "dotenv": "^8.2.0",
+      "nodemon": "^2.0.4",
+      "ts-node": "^9.0.0",
+      "typescript": "^4.0.3"
+    },
+    "scripts": {
+      "start": "nodemon src/index.ts",
+      "seed": "ts-node seed/seed.ts",
+      "clear": "ts-node seed/clear.ts",
+      "build": "tsc -p ./"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
