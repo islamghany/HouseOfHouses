@@ -1,32 +1,6 @@
-import {Schema,model,Document,Types} from 'mongoose';
-import {Listing} from './listing'
-import {Booking} from './booking'
+import {Schema,model,Types} from 'mongoose';
 
-export interface User extends Document{
-  _id:Types.ObjectId;
-  name: string;
-  avatar: string;
-  password: string;
-  email:string;
-  walletId?:string;
-  income?:number;
-  resetPasswordToken?:string;
-  bookings:Types.ObjectId[] | Booking[];
-  listings:Types.ObjectId[] | Listing[];
-}
 
-export interface UserPayload {
-	_id?:String;
-	name?:String;
-	avatar?:String;
-	email?:String;
-	walletId?:String;
-}
-
-export interface Viewer {
-   token?:string;
-   user?:UserPayload
-}
 
 const userSchema = new Schema({
     name:{
@@ -46,6 +20,10 @@ const userSchema = new Schema({
     	type:String,
     	required:true
     },
+    isAuthorize:{
+      type:Boolean,
+      default:false
+    },
     walletId:String,
     income: Number,
     resetPasswordToken:String,
@@ -59,4 +37,4 @@ const userSchema = new Schema({
     }]
 });
 
-export default model<User>("User", userSchema)
+export default model("User", userSchema)
