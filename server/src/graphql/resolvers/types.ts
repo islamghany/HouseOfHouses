@@ -1,5 +1,10 @@
 import {Types} from 'mongoose';
 
+export interface ConnectionArgs{
+  limit:number;
+  page:number;
+}
+
 export interface Booking{
     _id:Types.ObjectId;
     tenant:Types.ObjectId | User;
@@ -20,15 +25,12 @@ export interface User{
   listings:Types.ObjectId[] | Listing[];
 }
 
-// export interface UserPayload {
-// 	_id?:String;
-// 	name?:String;
-// 	avatar?:String;
-// 	email?:String;
-// 	walletId?:String;
-// 	bookings?:Types.ObjectId[] | Booking[];
-//     listings?:Types.ObjectId[] | Listing[];
-//}
+export interface UserPayload {
+	_id?:String;
+	name?:String;
+	avatar?:String;
+	email?:String;
+}
 
 // export interface Viewer {
 //    token?:string;

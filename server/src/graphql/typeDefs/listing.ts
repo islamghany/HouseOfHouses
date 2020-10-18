@@ -30,13 +30,12 @@ export default gql`
    	city:String!
    	price:Int!
    	numOfGuests:Int!
-   	booking(limit:Int!,cursor:ID):BookingConnection!
+   	booking(limit:Int!,page:Int!):BookingConnection!
    }
    type ListInfo{
    	hasNextPage:Boolean!
-   	hasPrevousPage:Boolean! 
-   	nextCursor:ID
-   	prevCursor:ID  	
+   	hasPreviousPage:Boolean! 
+    	
    }
    type ListingConnection{
    	result:[Listing]
@@ -54,7 +53,7 @@ export default gql`
    	price:Int!
    }
    extend type Query{
-   	listings(limit:Int,cursor:ID):ListingConnection
+   	listings(limit:Int,page:Int!):ListingConnection
    	listing(id:ID!):Listing
    }
    extend type Mutation{

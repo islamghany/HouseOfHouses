@@ -17,8 +17,8 @@ export default gql`
     email:String!
     isAuthorize:Boolean!
     income:Int
-    booking(limit:Int!,cursor:ID):BookingConnection
-    listing(limit:Int!,cursor:ID):ListingConnection
+    bookings(limit:Int!,page:Int!):BookingConnection
+    listings(limit:Int!,page:Int!):ListingConnection
    }
    type Viewer implements UserSafe{
    	_id:ID!

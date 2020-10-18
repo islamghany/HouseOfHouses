@@ -1,4 +1,4 @@
-import express from 'express';
+import express,{Request,Response,NextFunction} from 'express';
 import {ApolloServer,ApolloServerExpressConfig} from 'apollo-server-express';
 import {gql} from 'apollo-server-express';
 import Mongoose from 'mongoose';
@@ -12,7 +12,8 @@ const server = new ApolloServer({
   context:({req}:any)=>{
      return {
        req,
-       db:models
+       db:models,
+       user:req.user
      }
   }
 })
@@ -20,8 +21,24 @@ const server = new ApolloServer({
 const app = express();
 let database: Mongoose.Connection;
 
+// extract user id from cookie and retrun user model through the context
+app.use(async (req:any,res:Response,next:NextFunction)=>{
+    let user:any;
+    try{
+        user = await models.User.findOne({_id:'5f8bf481e4f5221560083426'});
+    }catch(err){
+      console.log('error' , err);
+    }
+    // if the is not token in cookie the the user be null
+    if(!user){
+         req.user=null
+       }
+    else req.user = user
+    next();
+})
 server.applyMiddleware({app});
 
+// init mongodb and when it be ready run the graphql server
  const connect = () => {
   if (database) {
     return;
