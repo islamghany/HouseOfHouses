@@ -27,17 +27,13 @@ const userSchema = new Schema({
     	required:true,
     	unique:true
     },
-    password:{
-    	type:String,
-    	required:true
-    },
     isAuthorize:{
       type:Boolean,
-      default:false
+      default:true
     },
     walletId:String,
     income: Number,
-    resetPasswordToken:String,
+    token:String,
     bookings:[{
     	type:Types.ObjectId,
     	ref:"Booking"

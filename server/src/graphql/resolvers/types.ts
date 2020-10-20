@@ -3,6 +3,7 @@ import {Types} from 'mongoose';
 export interface ConnectionArgs{
   limit:number;
   page:number;
+  keyword?:string;
 }
 
 export interface Booking{
@@ -18,9 +19,9 @@ export interface User{
   avatar: string;
   email:string;
   walletId?:string;
-  isAuthorize:boolean;
+  isAuthorize?:boolean;
   income?:number;
-  resetPasswordToken?:string;
+  token?:string;
   bookings:Types.ObjectId[] | Booking[];
   listings:Types.ObjectId[] | Listing[];
 }
@@ -49,12 +50,13 @@ export interface Listing {
 	description:string;
 	image:string;
 	address:string;
-	countery:string;
+	country:string;
 	city:string;
+  admin?:string;
 	price:number;
-	numOfGeuts:number;
+	numOfGuests:number;
 	type:ListingType;
-	host:Types.ObjectId | User;
+	host:string |Types.ObjectId | User;
 	bookings:Types.ObjectId[];
 
 }

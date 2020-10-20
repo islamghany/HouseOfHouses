@@ -16,6 +16,7 @@ export default gql`
    	type:ListingType!
    	country:String!
    	city:String!
+      admin:String
    	price:Int!
    }
    type Listing implements ListingSafe{
@@ -28,6 +29,7 @@ export default gql`
    	type:ListingType!
    	country:String!
    	city:String!
+      admin:String
    	price:Int!
    	numOfGuests:Int!
    	booking(limit:Int!,page:Int!):BookingConnection!
@@ -50,16 +52,17 @@ export default gql`
    	type:ListingType!
    	country:String!
    	city:String!
+      admin:String
    	price:Int!
    }
    extend type Query{
-   	listings(limit:Int,page:Int!):ListingConnection
+   	listings(limit:Int,page:Int!,keyword:String!):ListingConnection
    	listing(id:ID!):Listing
    }
    extend type Mutation{
    	createListing(input:ListingInput):Listing
    	deleteListing(id:ID!):SuccessMessage
-    updateListing(input:ListingInput):Listing
+      updateListing(input:ListingInput):Listing
    }
 
 `

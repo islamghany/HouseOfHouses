@@ -26,11 +26,15 @@ const listingSchema = new Schema({
 		type:String,
 		required:true,
 	},
+	admin:{
+		type:String,
+		required:true,
+	},
 	price:{
 		type:Number,
 		required:true,
 	},
-	numOfGeuts:{
+	numOfGuests:{
 		type:Number,
 		default:0
 	},

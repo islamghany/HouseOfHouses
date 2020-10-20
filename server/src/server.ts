@@ -5,6 +5,7 @@ import Mongoose from 'mongoose';
 import models from './models';
 import resolvers from './graphql/resolvers';
 import typeDefs from './graphql/typeDefs';
+//import {seed} from './resolvers/seed'
 require('dotenv').config()
 const server = new ApolloServer({
 	typeDefs,
@@ -36,18 +37,25 @@ app.use(async (req:any,res:Response,next:NextFunction)=>{
     else req.user = user
     next();
 })
-server.applyMiddleware({app});
+server.applyMiddleware({app,cors:{
+  origin:"*"
+}});
 
 // init mongodb and when it be ready run the graphql server
  const connect = () => {
   if (database) {
     return;
   }
-  Mongoose.connect(`${process.env.MONG_DB}`)
+  Mongoose.connect(`${process.env.MONG_DB}`,{
+    //@ts-ignore
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+  })
   database = Mongoose.connection;
   database.once("open", async () => {
      app.listen({port:4000},()=>{
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+  // seed();
  })
   });
   database.on("error", () => {
