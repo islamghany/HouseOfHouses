@@ -56,13 +56,13 @@ export default gql`
    	price:Int!
    }
    extend type Query{
-   	listings(limit:Int,page:Int!,keyword:String!):ListingConnection
-   	listing(id:ID!):Listing
+   	listings(limit:Int!,page:Int!,keyword:String!):ListingConnection!
+   	listing(id:ID!):Listing!
    }
    extend type Mutation{
-   	createListing(input:ListingInput):Listing
-   	deleteListing(id:ID!):SuccessMessage
-      updateListing(input:ListingInput):Listing
+   	createListing(input:ListingInput):Listing!
+   	deleteListing(id:ID!):SuccessMessage!
+      updateListing(input:ListingInput):Listing!
    }
 
 `

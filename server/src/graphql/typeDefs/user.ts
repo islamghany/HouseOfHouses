@@ -16,9 +16,9 @@ export default gql`
     hasWallet:Boolean!
     email:String!
     isAuthorize:Boolean!
-    income:Int
-    bookings(limit:Int!,page:Int!):BookingConnection
-    listings(limit:Int!,page:Int!):ListingConnection
+    income:Int!
+    bookings(limit:Int!,page:Int!):BookingConnection!
+    listings(limit:Int!,page:Int!):ListingConnection!
    }
    type Viewer implements UserSafe{
    	_id:ID!

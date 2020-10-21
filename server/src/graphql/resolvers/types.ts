@@ -20,8 +20,8 @@ export interface User{
   email:string;
   walletId?:string;
   isAuthorize?:boolean;
-  income?:number;
-  token?:string;
+  income:number;
+  token:string;
   bookings:Types.ObjectId[] | Booking[];
   listings:Types.ObjectId[] | Listing[];
 }
@@ -56,7 +56,7 @@ export interface Listing {
 	price:number;
 	numOfGuests:number;
 	type:ListingType;
-	host:string |Types.ObjectId | User;
+	host:string;
 	bookings:Types.ObjectId[];
 
 }
@@ -87,6 +87,7 @@ export interface ListingInput{
    	country:string;
    	city:string;
    	price:number;
+    admin?:string;
    }
 }
 export interface Arg{
