@@ -40,17 +40,20 @@ const Listings:React.FC = (props:any)=>{
 	 <SearchBox />
 	 <Drawer />
 	 <h1>{data?.listings?.result ? data.listings.result.length : "Loading"} </h1>
-	 <RowOfCards />
+	 <RowOfCards loading={loading} />
 	</Section>
 }
 
+interface RowProps  {
+	loading:boolean;
+} 
 const SearchBox =React.memo(()=>{
 	return <div>
 	   <Header.SearchBox>
 	   </Header.SearchBox>
 	</div>
 })
-const RowOfCards = ()=>{
+const RowOfCards:React.FC<RowProps> = ({loading})=>{
     return <div>
 
     </div>

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Panel,Button} from 'rsuite'
 import styled from 'styled-components';
+import GoogleSignin from '../containers/GoogleOAuth'
 const Section = styled.section`
   padding-top:100px;
   display:flex;
@@ -21,6 +22,7 @@ const SignIn:React.FC = ()=>{
 	 <Button>
 	 Signin with Google
 	 </Button>
+   <GoogleSignin />
   </FormContaner>
 	</Section>
 }

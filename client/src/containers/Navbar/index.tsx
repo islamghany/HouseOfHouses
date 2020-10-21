@@ -2,21 +2,28 @@ import {Nav,Dropdown ,Icon} from 'rsuite';
 import React from 'react'
 import Navbar from '../../components/Navbar';
 import {Link,withRouter} from 'react-router-dom';
+
+const MyLink = React.forwardRef((props:any, ref:any) => {
+  const { href, as, ...rest } = props;
+  return (
+    <Link href={href} as={as}>
+      <a ref={ref} {...rest} />
+    </Link>
+  );
+});
+const NavLink = (props:any) => <Nav.Item componentClass={MyLink} {...props} />;
+
+
 const NavbarContainer:React.FC = (props:any)=>{
- console.log(props,props && props.location.pathname==="/" ? true : false)
- return <Navbar isHome={props && props.location.pathname==="/" ? true : false}>
+ return <Navbar isHome={props?.location?.pathname==="/" ? true : false}>
     <Navbar.Header>
     <Link className="navbar-brand logo" to="/">
       HouseOfHouses
       </Link>
     </Navbar.Header>
      <Nav pullRight>
-        <Link to="/create-listing">
-        <Nav.Item icon={<Icon icon="cog" />} >add property</Nav.Item>
-        </Link>
-         <Link to="/signin">
-         <Nav.Item >Signin</Nav.Item>
-         </Link>
+        <NavLink href="/create-listing" icon={<Icon icon="cog" />} >add property</NavLink>
+         <NavLink href="/signin" >Signin</NavLink>
       </Nav>
     </Navbar>
     

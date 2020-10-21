@@ -8,7 +8,9 @@ import User from './pages/User';
 import Signup from './pages/Signup';
 import {ThemeProvider} from 'styled-components';
 import {theme,GlobaStyle} from 'Style';
-import Navbar from './containers/Navbar'
+import Navbar from './containers/Navbar';
+import AuthRoute from './helper/AuthRoute'
+
 const App:React.FC = ()=>{
 	return <ThemeProvider theme={theme}>
 	 <GlobaStyle />
@@ -18,9 +20,14 @@ const App:React.FC = ()=>{
 	  <Navbar />
 	  <Switch>
 	  <Route path="/Listing/:id" component={Listing} />
-	  <Route path="/signin" component={Signin} />
+	  <AuthRoute path="/signin" type="guest" >
+	   <Signin />
+	  </AuthRoute>
 	  <Route path="/listings" component={Listings} />
 	  <Route path="/profile" component={User} />
+	  <AuthRoute path="/profile" type="private" >
+	   <User />
+	  </AuthRoute>
 	  <Route path="/" component={Home} />
 	  <Route component={Signup} />
 	  </Switch>

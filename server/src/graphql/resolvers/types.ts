@@ -6,6 +6,17 @@ export interface ConnectionArgs{
   keyword?:string;
 }
 
+export interface Viewer{
+  _id:string;
+  token:string;
+  avatar:string;
+  walletId:string;
+  email:string;
+  name:string;
+}
+export interface SigninArgs {
+ tokenId:string;
+}
 export interface Booking{
     _id:Types.ObjectId;
     tenant:Types.ObjectId | User;
